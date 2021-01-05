@@ -24,10 +24,11 @@ button.click()
 
 time.sleep(3)
 
-person_id = "264390313"
+ids = ["264390313", "413992193", "558904070"]
 
-driver.get("https://vk.com/im?sel=" + person_id)
+for person in ids:
+    driver.get("https://vk.com/im?sel=" + person)
 
-message_box = driver.find_element(By.ID, "im_editable" + person_id)
-message_box.click()
-message_box.send_keys(":D" + Keys.ENTER)
+    message_box = driver.find_element(By.ID, "im_editable" + person)
+    message_box.click()
+    message_box.send_keys(":D" + Keys.ENTER)
