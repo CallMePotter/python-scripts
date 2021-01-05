@@ -32,3 +32,5 @@ for person in ids:
     message_box = driver.find_element(By.ID, "im_editable" + person)
     message_box.click()
     message_box.send_keys(":D" + Keys.ENTER)
+
+    time.sleep(5) # sleep so you don't trigger anti-bot system
