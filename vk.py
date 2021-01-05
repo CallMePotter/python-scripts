@@ -11,17 +11,21 @@ driver = webdriver.Firefox(executable_path="/home/potter/.local/share/firefox/ge
 # Navigate to Url
 driver.get("https://vk.com")
 
+# Enter login info
 login_field = driver.find_element(By.ID, "index_email")
 login_field.click()
 login_field.send_keys(secrets.login)
 
+# Enter password info
 password_field = driver.find_element(By.ID, "index_pass")
 password_field.click()
 password_field.send_keys(secrets.password)
 
+# Press login button
 button = driver.find_element(By.ID, "index_login_button")
 button.click()
 
+# Wait for page to load
 time.sleep(3)
 
 ids = ["264390313", "413992193", "558904070"]
