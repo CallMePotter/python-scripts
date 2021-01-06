@@ -26,13 +26,12 @@ button.click()
 # Wait for page to load
 time.sleep(3)
 
-ids = ["264390313", "413992193", "558904070"]
+ids = ["558904070"]
 
 for person in ids:
     driver.get("https://vk.com/im?sel=" + person)
 
     message_box = driver.find_element(By.ID, "im_editable" + person)
-    message_box.click()
     message_box.send_keys(":D" + Keys.ENTER)
 
     time.sleep(5) # sleep so you don't trigger anti-bot system
