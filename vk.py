@@ -13,12 +13,10 @@ driver.get("https://vk.com")
 
 # Enter login info
 login_field = driver.find_element(By.ID, "index_email")
-login_field.click()
 login_field.send_keys(secrets.login)
 
 # Enter password info
 password_field = driver.find_element(By.ID, "index_pass")
-password_field.click()
 password_field.send_keys(secrets.password)
 
 # Press login button
