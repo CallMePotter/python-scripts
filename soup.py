@@ -1,23 +1,36 @@
 from bs4 import BeautifulSoup
 import requests
 
-link = "https://wanderinginn.com/table-of-contents"
-source = requests.get(link).text
+source = requests.get("https://wanderinginn.com/table-of-contents").text
 soup = BeautifulSoup(source, "html.parser")
 
+links = ""
+formatted_text = ""
+i = 1
+items = {}
+
 for link in soup.find_all("a"):
-    if link.text == "2.00":
+    links += str(link.text) + "\n"
+
+links = links.splitlines()[24:]
+
+for link in links:
+    print("[{}] - {}".format(i, link))
+    items[i] = link
+    i += 1
+
+chapter = int(input("Enter index to start reading: "))
+
+for link in soup.find_all("a"):
+    print(link)
+    if items[chapter]:
         subsource = requests.get(link.get("href")).text
         subsoup = BeautifulSoup(subsource, "html.parser")
 
 text = subsoup.find("div", {"class": "entry-content"})
 
-formatted_text = ""
-
 for paragraph in text.find_all("p"):
     formatted_text += str(paragraph.text) + "\n"
-
-formatted_text.splitlines()[:-2]
 
 for line in formatted_text.splitlines()[:-2]:
     print(line)
