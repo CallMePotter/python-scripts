@@ -24,8 +24,11 @@ for chapter in links:
 
     text = subsoup.find("div", {"class": "entry-content"})
 
-    for paragraph in text.find_all("p"):
-        formatted_text += str(paragraph.text) + "\n"
+    try:
+        for paragraph in text.find_all("p"):
+            formatted_text += str(paragraph.text) + "\n"
+    except AttributeError:
+        pass
 
     file.write(name + "\n")
 
