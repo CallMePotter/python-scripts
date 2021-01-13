@@ -1,5 +1,5 @@
-from bs4 import BeautifulSoup
 import requests
+from bs4 import BeautifulSoup
 
 source = requests.get("https://wanderinginn.com/table-of-contents").text
 soup = BeautifulSoup(source, "html.parser")
