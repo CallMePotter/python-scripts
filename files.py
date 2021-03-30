@@ -11,6 +11,9 @@ for entry in entries:
         if entry.name.lower().endswith(('pdf')):
             os.rename(entry.path, basepath + "pdfs/" + entry.name)
 
+        if entry.name.lower().endswith(('mp3')):
+            os.rename(entry.path, basepath + "music/" + entry.name)
+
     if entry.is_dir():
         sub_entries = os.scandir(entry.path)
 
