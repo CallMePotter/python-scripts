@@ -19,7 +19,7 @@ col_start = 1
 col_end = 100
 
 # Open document
-doc_name = "энергослужба.xlsx"
+doc_name = ".xlsx"
 document = openpyxl.load_workbook(doc_name)
 sheet = document["Лист1"]
 
@@ -40,6 +40,9 @@ dictOfElems = getDuplicatesWithCount(vals)
 
 print(doc_name, "\n")
 for key, value in dictOfElems.items():
-    print(key[:-2], str(value),int(key[-1]) * value)
+    try:
+        print(key[:-2], str(value),int(key[-1]) * value)
+    except ValueError:
+        pass
 
 print(sheet["e47"].value)
